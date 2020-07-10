@@ -2,6 +2,9 @@
 //Maps are defined as map_name[unique key] = value, used to store a value against a unique key
 //Forward//
 
+console.log("CHOOSE YOUR OWN ADVENTURE SCRIPT 'adventure.js' LOADED!");
+
+
 //DECLARATION SECTION
 
 //Stores a reference to the HTML element against a friendly name
