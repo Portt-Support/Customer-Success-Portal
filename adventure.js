@@ -179,11 +179,12 @@ function updateFunctions(){
 }
 
 function optionSelected(optionName){
+  console.log("Event Handler: Option Selected - " + optionName);
   if(optionName == null){
     console.log("No option selected, yet event handler 'optionSelected' was called");
     return false;
   }
-  if(!optionControlMap[optionName]){optionControlMap[optionName] = true;}
+  else if(!optionControlMap[optionName]){optionControlMap[optionName] = true;}
   else{optionControlMap[optionName] = false;}
   updateFunctions();
 }
