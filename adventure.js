@@ -133,22 +133,22 @@ options["process-information"] = option_processInformation;
 //DECLARATION SECTION OVER
 
 //Event Listeners//
-optionControlMap["contract-register"].addEventListener("click", updateFunctions("contract-register"));
+optionControlMap["contract-register"].addEventListener("click", optionSelected("contract-register"));
 console.log(optionControlMap["contract-register"]);
-optionControlMap["endorsements"].addEventListener("click", updateFunctions("endorsements"));
-optionControlMap["milestones"].addEventListener("click", updateFunctions("milestones"));
-optionControlMap["collaborate-with-vendors"].addEventListener("click", updateFunctions("collaborate-with-vendors"));
-optionControlMap["contract-issues"].addEventListener("click", updateFunctions("contract-issues"));
-optionControlMap["supplier-performance"].addEventListener("click", updateFunctions("supplier-performance"));
-optionControlMap["schedule-of-rates"].addEventListener("click", updateFunctions("schedule-of-rates"));
-optionControlMap["panels"].addEventListener("click", updateFunctions("panels"));
-optionControlMap["compliance"].addEventListener("click", updateFunctions("compliance"));
-optionControlMap["spend-tracking"].addEventListener("click", updateFunctions("spend-tracking"));
-optionControlMap["track-benefits"].addEventListener("click", updateFunctions("track-benefits"));
-optionControlMap["complex-compliance"].addEventListener("click", updateFunctions("complex-compliance"));
-optionControlMap["collaborate-on-compliance"].addEventListener("click", updateFunctions("collaborate-on-compliance"));
-optionControlMap["organisation-information"].addEventListener("click", updateFunctions("organisation-information"));
-optionControlMap["process-information"].addEventListener("click", updateFunctions("process-information"));
+optionControlMap["endorsements"].addEventListener("click", optionSelected("endorsements"));
+optionControlMap["milestones"].addEventListener("click", optionSelected("milestones"));
+optionControlMap["collaborate-with-vendors"].addEventListener("click", optionSelected("collaborate-with-vendors"));
+optionControlMap["contract-issues"].addEventListener("click", optionSelected("contract-issues"));
+optionControlMap["supplier-performance"].addEventListener("click", optionSelected("supplier-performance"));
+optionControlMap["schedule-of-rates"].addEventListener("click", optionSelected("schedule-of-rates"));
+optionControlMap["panels"].addEventListener("click", optionSelected("panels"));
+optionControlMap["compliance"].addEventListener("click", optionSelected("compliance"));
+optionControlMap["spend-tracking"].addEventListener("click", optionSelected("spend-tracking"));
+optionControlMap["track-benefits"].addEventListener("click", optionSelected("track-benefits"));
+optionControlMap["complex-compliance"].addEventListener("click", optionSelected("complex-compliance"));
+optionControlMap["collaborate-on-compliance"].addEventListener("click", optionSelected("collaborate-on-compliance"));
+optionControlMap["organisation-information"].addEventListener("click", optionSelected("organisation-information"));
+optionControlMap["process-information"].addEventListener("click", optionSelected("process-information"));
 //Event Listeners//
 
 updateFunctions();
