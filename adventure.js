@@ -6,9 +6,10 @@ console.log("CHOOSE YOUR OWN ADVENTURE SCRIPT 'adventure.js' LOADED!");
 
 
 //DECLARATION SECTION
-
 //Stores a reference to the HTML element against a friendly name
 //optionControlMap[Friendly Name] = HTML element
+console.log("Declaration");
+
 let optionControlMap = new Map();
 optionControlMap["contract-register"] = document.getElementsByClassName("optionbutton contract-register w-button")[0];
 optionControlMap["endorsements"] = document.getElementsByClassName("optionbutton endorsements w-button")[0];
@@ -27,6 +28,8 @@ optionControlMap["organisation-information"] = document.getElementsByClassName("
 optionControlMap["process-information"] = document.getElementsByClassName("optionbutton process-information w-button")[0];
 
 //Used to track what options have been enabled/disabled.
+console.log("Enable Map");
+
 let optionEnabledMap = new Map();
 optionEnabledMap["contract-register"] = false;
 optionEnabledMap["endorsements"] = false;
@@ -52,6 +55,8 @@ optionEnabledMap["process-information"] = false;
 //Originally two seperate maps, but combined for easiness
 //elementMap[Friendly Name for Element] = reference to HTML element
 //getElementsByClassName returns an array, the item we want is always the first element in the array. 
+console.log("Element Map");
+
 let elementMap = new Map();
 //Modules
 elementMap["contract"] = document.getElementsByClassName("module contract w-richtext")[0];
