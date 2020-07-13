@@ -129,6 +129,7 @@ options["process-information"] = option_processInformation;
 
 //Event Listeners//
 optionControlMap["contract-register"].addEventListener("click", updateFunctions("contract-register"));
+console.log(optionControlMap["contract-register"]);
 optionControlMap["endorsements"].addEventListener("click", updateFunctions("endorsements"));
 optionControlMap["milestones"].addEventListener("click", updateFunctions("milestones"));
 optionControlMap["collaborate-with-vendors"].addEventListener("click", updateFunctions("collaborate-with-vendors"));
