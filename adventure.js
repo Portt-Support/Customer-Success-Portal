@@ -10,7 +10,7 @@ console.log("WHY JAVASCRIPT? WHY?");
 //DECLARATION SECTION
 //Stores a reference to the HTML element against a friendly name
 //optionControlMap[Friendly Name] = HTML element
-
+ 
 
 let optionControlMap = new Map();
 optionControlMap["contract-register"] = document.getElementsByClassName("optionbutton contract-register w-button")[0];
@@ -61,53 +61,53 @@ optionEnabledMap["process-information"] = false;
 
 let elementMap = new Map();
 //Modules
-elementMap["contract"] = document.getElementsByClassName("module contract w-richtext")[0];
-elementMap["procurement"] = document.getElementsByClassName("module procurement w-richtext")[0];
-elementMap["organization"] = document.getElementsByClassName("module organization w-richtext")[0];
-elementMap["core"] = document.getElementsByClassName("module core w-richtext")[0];
-elementMap["panel"] = document.getElementsByClassName("module panel w-richtext")[0];
-elementMap["report"] = document.getElementsByClassName("module report w-richtext")[0];
-elementMap["analytics"] = document.getElementsByClassName("module module analytics w-richtext")[0];
-elementMap["financial"] = document.getElementsByClassName("module financial w-richtext")[0];
-elementMap["landing-page"] = document.getElementsByClassName("module landingpage w-richtext")[0];
-elementMap["portt-hub"] = document.getElementsByClassName("module portt-hub w-richtext")[0];
+elementMap["contract"] = document.getElementsByClassName("module contract")[0];
+elementMap["procurement"] = document.getElementsByClassName("module procurement")[0];
+elementMap["organization"] = document.getElementsByClassName("module organization")[0];
+elementMap["core"] = document.getElementsByClassName("module core")[0];
+elementMap["panel"] = document.getElementsByClassName("module panel")[0];
+elementMap["report"] = document.getElementsByClassName("module report")[0];
+elementMap["analytics"] = document.getElementsByClassName("module analytics")[0];
+elementMap["financial"] = document.getElementsByClassName("module financial")[0];
+elementMap["landing-page"] = document.getElementsByClassName("module landingpage")[0];
+elementMap["portt-hub"] = document.getElementsByClassName("module portt-hub")[0];
 
 //Functions
-elementMap["account-codes"] = document.getElementsByClassName("feature accountcodes w-richtext")[0];
-elementMap["benefits"] = document.getElementsByClassName("feature benefits w-richtext")[0];
-elementMap["compliance-types"] = document.getElementsByClassName("feature compliancetypes w-richtext")[0];
-elementMap["compliance"] = document.getElementsByClassName("feature compliance w-richtext")[0];
-elementMap["compliance-basic"] = document.getElementsByClassName("feature compliance basic w-richtext")[0];
-elementMap["issues"] = document.getElementsByClassName("feature issues w-richtext")[0];
-elementMap["sharing"] = document.getElementsByClassName("feature sharing w-richtext")[0];
-elementMap["stakeholders"] = document.getElementsByClassName("feature stakeholders w-richtext")[0];
-elementMap["stakeholders-basic"] = document.getElementsByClassName("feature stakeholders basic w-richtext")[0];
-elementMap["contract-types"] = document.getElementsByClassName("feature contracttypes w-richtext")[0];
-elementMap["workflow-basic"] = document.getElementsByClassName("feature workflow basic w-richtext")[0];
-elementMap["workflow-advanced"] = document.getElementsByClassName("feature workflow advanced w-richtext")[0];
-elementMap["milestone-types"] = document.getElementsByClassName("feature milestonetypes w-richtext")[0];
-elementMap["organization-assessments"] = document.getElementsByClassName("feature organizationassessments w-richtext")[0];
-elementMap["organization-certifications"] = document.getElementsByClassName("feature organizationcertification w-richtext")[0];
-elementMap["panel-hierarchies"] = document.getElementsByClassName("feature panelhierarchies w-richtext")[0];
-elementMap["panel-types"] = document.getElementsByClassName("feature paneltypes w-richtext")[0];
-elementMap["rate-types"] = document.getElementsByClassName("feature ratetypes w-richtext")[0];
-elementMap["supplier-performance"] = document.getElementsByClassName("feature supplierperformance w-richtext")[0];
-elementMap["template-generation"] = document.getElementsByClassName("feature templategeneration w-richtext")[0];
-elementMap["unit-types"] = document.getElementsByClassName("feature unittypes w-richtext")[0];
+elementMap["account-codes"] = document.getElementsByClassName("feature accountcodes")[0];
+elementMap["benefits"] = document.getElementsByClassName("feature benefits")[0];
+elementMap["compliance-types"] = document.getElementsByClassName("feature compliancetypes")[0];
+elementMap["compliance"] = document.getElementsByClassName("feature compliance")[0];
+elementMap["compliance-basic"] = document.getElementsByClassName("feature compliancebasic")[0];
+elementMap["issues"] = document.getElementsByClassName("feature issues")[0];
+elementMap["sharing"] = document.getElementsByClassName("feature sharing")[0];
+elementMap["stakeholders"] = document.getElementsByClassName("feature stakeholders")[0];
+elementMap["stakeholders-basic"] = document.getElementsByClassName("feature stakeholdersbasic")[0];
+elementMap["contract-types"] = document.getElementsByClassName("feature contracttypes")[0];
+elementMap["workflow-basic"] = document.getElementsByClassName("feature workflowbasic")[0];
+elementMap["workflow-advanced"] = document.getElementsByClassName("feature workflowadvanced")[0];
+elementMap["milestone-types"] = document.getElementsByClassName("feature milestonetypes")[0];
+elementMap["organization-assessments"] = document.getElementsByClassName("feature organizationassessments")[0];
+elementMap["organization-certifications"] = document.getElementsByClassName("feature organizationcertifications")[0];
+elementMap["panel-hierarchies"] = document.getElementsByClassName("feature panelhierarchies")[0];
+elementMap["panel-types"] = document.getElementsByClassName("feature paneltypes")[0];
+elementMap["rate-types"] = document.getElementsByClassName("feature ratetypes")[0];
+elementMap["supplier-performance"] = document.getElementsByClassName("feature supplierperformance")[0];
+elementMap["template-generation"] = document.getElementsByClassName("feature templategeneration")[0];
+elementMap["unit-types"] = document.getElementsByClassName("feature unittypes")[0];
 
 //Option Array - Configure the different options
 //These arrays contain the friendly names for elements found in elementMap
 //option_name = [elementMap key]
-option_contractRegister = ["account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic"];
-option_endorsements = ["workflow-advanced", "compliance"];
-option_milestones = ["milestone-types"];
-option_collaborateWithVendors = ["portt-hub", "sharing"];
-option_contractIssues = ["issues"];
-option_supplierPerformance = ["supplier-performance", "organization-assessments", "issues", "analytics"]; 
-option_scheduleOfRates = ["rate-types", "unit-types", "panel"];
-option_panels = ["panel-types", "panel-hierarchies"];
-option_compliance = ["compliance-types", "template-generation"];
-option_spendTracking = ["financial"];
+option_contractRegister = ["account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization"];
+option_endorsements = ["workflow-advanced", "compliance", "account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization"];
+option_milestones = ["milestone-types", "contract", "core"];
+option_collaborateWithVendors = ["portt-hub", "sharing", "contract", "core"];
+option_contractIssues = ["issues", "contract", "core", "organization"];
+option_supplierPerformance = ["supplier-performance", "organization-assessments", "issues", "analytics", "contract", "core", "organization"]; 
+option_scheduleOfRates = ["rate-types", "unit-types", "panel", "contract", "core", "organization"];
+option_panels = ["panel-types", "panel-hierarchies", "contract", "core", "organization"];
+option_compliance = ["compliance-types", "template-generation", "compliance", "contract", "core", "organization", "procurement"];
+option_spendTracking = ["financial", "contract-types", "workflow-basic"];
 option_trackBenefits = ["benefits"];
 option_complexCompliance = ["compliance"];
 option_collaborateOnCompliance = ["portt-hub", "sharing", "organization-certifications", "organization-assessments"];
@@ -306,7 +306,6 @@ btn.onclick = function eventFunction(){
 
 //Event Listeners//
 
-
 updateFunctions();
 
 
@@ -316,13 +315,15 @@ updateFunctions();
 //By looping through and finding out where those elements are still required
 //In laymans terms, we disable everything, and then only reenable the items that are necessary
 function updateFunctions(){
+  
   for(option in optionControlMap){
-    
+    console.log(option);  
     if(optionEnabledMap[option] == false){
       for(element of options[option]){
-        
         //remove heighlight
+        console.log(element);
         elementMap[element].setAttribute('style', 'background-color:none');
+        console.log(element);
       }
     }
   }
