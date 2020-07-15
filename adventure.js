@@ -98,10 +98,10 @@ elementMap["unit-types"] = document.getElementsByClassName("feature unittypes")[
 //Option Array - Configure the different options
 //These arrays contain the friendly names for elements found in elementMap
 //option_name = [elementMap key]
-option_contractRegister = ["account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization"];
+option_contractRegister = ["account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization", "report", "stakeholders"];
 option_endorsements = ["workflow-advanced", "compliance", "account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization"];
 option_milestones = ["milestone-types", "contract", "core"];
-option_collaborateWithVendors = ["portt-hub", "sharing", "contract", "core"];
+option_collaborateWithVendors = ["portt-hub", "sharing", "contract", "core", "organization"];
 option_contractIssues = ["issues", "contract", "core", "organization"];
 option_supplierPerformance = ["supplier-performance", "organization-assessments", "issues", "analytics", "contract", "core", "organization"]; 
 option_scheduleOfRates = ["rate-types", "unit-types", "panel", "contract", "core", "organization"];
@@ -317,13 +317,13 @@ updateFunctions();
 function updateFunctions(){
   
   for(option in optionControlMap){
-    console.log(option);  
+    //console.log(option);  
     if(optionEnabledMap[option] == false){
       for(element of options[option]){
         //remove heighlight
-        console.log(element);
-        elementMap[element].setAttribute('style', 'background-color:none');
-        console.log(element);
+        //console.log(element);
+        elementMap[element].setAttribute('style', 'display:none');
+        //console.log(element);
       }
     }
   }
@@ -335,7 +335,7 @@ function updateFunctions(){
         //What happens to functions that have been selected
         //i.e. they glow to show they've been selected
         //innerContent should just change the text
-        elementMap[element].setAttribute('style', 'background-color:rgb(203,234,238); text-decoration:underline; text-decoration-color:rgb(98,192,203);');
+        elementMap[element].setAttribute('style', 'display:visible');
         //square overlay that's a background tint cyan or purple tint
         
       }
