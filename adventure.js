@@ -321,9 +321,9 @@ function updateFunctions(){
     if(optionEnabledMap[option] == false){
       for(element of options[option]){
         //remove heighlight
-        //console.log(element);
+        console.log(element);
         elementMap[element].setAttribute('style', 'display:none');
-        //console.log(element);
+        console.log(element);
       }
     }
   }
