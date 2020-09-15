@@ -1,5 +1,8 @@
 //Forward://
-//Maps are defined as map_name[unique key] = value, used to store a value against a unique key
+//This script was put together pretty quickly and by someone with little experience of JS. 
+//My suggestion: If you do have to maintain this in the future, dont, just start again
+//
+//Event listeners continue to be unoptimal in this file
 //Forward//
 
 console.log("CHOOSE YOUR OWN ADVENTURE SCRIPT 'adventure.js' LOADED!");
@@ -142,7 +145,7 @@ options["process-information"] = option_processInformation;
 btn = optionControlMap['contract-register'];
 
 btn.onclick = function eventFunction(){
-  console.log("contract-register");
+  //console.log("contract-register");
   if(!optionEnabledMap["contract-register"])
     optionEnabledMap["contract-register"] = true;
   else                                      
@@ -153,7 +156,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap['endorsements'];
 
 btn.onclick = function eventFunction(){
-  console.log('endorsements');
+  //console.log('endorsements');
   if(!optionEnabledMap['endorsements'])
     optionEnabledMap['endorsements'] = true;
   else                                      
@@ -164,7 +167,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap['milestones'];
 
 btn.onclick = function eventFunction(){
-  console.log('milestones');
+  //console.log('milestones');
   if(!optionEnabledMap['milestones'])
     optionEnabledMap['milestones'] = true;
   else                                      
@@ -175,7 +178,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap['collaborate-with-vendors'];
 
 btn.onclick = function eventFunction(){
-  console.log('collaborate-with-vendors');
+  //console.log('collaborate-with-vendors');
   if(!optionEnabledMap['collaborate-with-vendors'])
     optionEnabledMap['collaborate-with-vendors'] = true;
   else                                      
@@ -186,7 +189,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["contract-issues"];
 
 btn.onclick = function eventFunction(){
-  console.log('contract-issues');
+  //console.log('contract-issues');
   if(!optionEnabledMap['contract-issues'])
     optionEnabledMap['contract-issues'] = true;
   else                                      
@@ -197,7 +200,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["supplier-performance"];
 
 btn.onclick = function eventFunction(){
-  console.log('supplier-performance');
+  //console.log('supplier-performance');
   if(!optionEnabledMap['supplier-performance'])
     optionEnabledMap['supplier-performance'] = true;
   else                                      
@@ -208,7 +211,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["schedule-of-rates"];
 
 btn.onclick = function eventFunction(){
-  console.log('schedule-of-rates');
+  //console.log('schedule-of-rates');
   if(!optionEnabledMap['schedule-of-rates'])
     optionEnabledMap['schedule-of-rates'] = true;
   else                                      
@@ -219,7 +222,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["panels"];
 
 btn.onclick = function eventFunction(){
-  console.log('panels');
+  //console.log('panels');
   if(!optionEnabledMap['panels'])
     optionEnabledMap['panels'] = true;
   else                                      
@@ -230,7 +233,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["compliance"];
 
 btn.onclick = function eventFunction(){
-  console.log('compliance');
+  //console.log('compliance');
   if(!optionEnabledMap['compliance'])
     optionEnabledMap['compliance'] = true;
   else                                      
@@ -241,7 +244,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["spend-tracking"];
 
 btn.onclick = function eventFunction(){
-  console.log('spend-tracking');
+  //console.log('spend-tracking');
   if(!optionEnabledMap['spend-tracking'])
     optionEnabledMap['spend-tracking'] = true;
   else                                      
@@ -252,7 +255,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["track-benefits"];
 
 btn.onclick = function eventFunction(){
-  console.log('track-benefits');
+  //console.log('track-benefits');
   if(!optionEnabledMap['track-benefits'])
     optionEnabledMap['track-benefits'] = true;
   else                                      
@@ -263,7 +266,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["complex-compliance"];
 
 btn.onclick = function eventFunction(){
-  console.log('complex-compliance');
+  //console.log('complex-compliance');
   if(!optionEnabledMap['complex-compliance'])
     optionEnabledMap['complex-compliance'] = true;
   else                                      
@@ -274,7 +277,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["collaborate-on-compliance"];
 
 btn.onclick = function eventFunction(){
-  console.log('collaborate-on-compliance');
+  //console.log('collaborate-on-compliance');
   if(!optionEnabledMap['collaborate-on-compliance'])
     optionEnabledMap['collaborate-on-compliance'] = true;
   else                                      
@@ -285,7 +288,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["organisation-information"];
 
 btn.onclick = function eventFunction(){
-  console.log('organisation-information');
+  //console.log('organisation-information');
   if(!optionEnabledMap['organisation-information'])
     optionEnabledMap['organisation-information'] = true;
   else                                      
@@ -296,7 +299,7 @@ btn.onclick = function eventFunction(){
 btn = optionControlMap["process-information"];
 
 btn.onclick = function eventFunction(){
-  console.log('process-information');
+  //console.log('process-information');
   if(!optionEnabledMap['process-information'])
     optionEnabledMap['process-information'] = true;
   else                                      
@@ -321,9 +324,9 @@ function updateFunctions(){
     if(optionEnabledMap[option] == false){
       for(element of options[option]){
         //remove heighlight
-        console.log(element);
+        //console.log(element);
         elementMap[element].setAttribute('style', 'display:none');
-        console.log(element);
+        //console.log(element);
       }
     }
   }
@@ -347,10 +350,10 @@ function updateFunctions(){
 //Probably no longer useful, this was an actually clean solution
 //Now it's all just hard coded bs
 function optionSelected(optionName){
-  console.log(optionName)
-  console.log("Event Handler: Option Selected - " + optionName);
+  //console.log(optionName)
+  //console.log("Event Handler: Option Selected - " + optionName);
   if(optionName == null){
-    console.log("No option selected, yet event handler 'optionSelected' was called");
+    //console.log("No option selected, yet event handler 'optionSelected' was called");
     return false;
   }
   else if(!optionControlMap[optionName]){optionControlMap[optionName] = true;}
