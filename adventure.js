@@ -358,3 +358,68 @@ function optionSelected(optionName){
   updateFunctions();
 }
 
+//////
+
+
+
+var requestEndpoint = "https://prod-06.australiasoutheast.logic.azure.com:443/workflows/da625183714642c999dd98210c595876/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=6Qu7rdWqihrfEVIjdjDBkxzOY40EEVNmzYU8iq5j1BU";
+
+	var form = document.getElementById("email-form");
+  
+	var button = document.getElementsByClassName("adventure-form-button w-button")[0];
+	button.href = "javascript:void(0)";
+  
+	var mandatoryFields = [document.getElementsByClassName("form-input-text name w-input")[0], document.getElementsByClassName("form-input-text address w-input")[0]];
+  
+  function hideSubmitButton(){
+    if(button != null){
+      button.style.opacity = 0.2;
+    }
+  }
+  hideSubmitButton();
+  
+  function showSubmitButton(){
+  	if(button != null){
+      button.style.opacity = 1.0;
+    }
+  }
+  
+  function getFormData(){
+  	let map = new Map();
+    map.set['User Details', 
+      {
+        name: document.getElementsByClassName("form-input-text name w-input")[0].value,
+        email: document.getElementsByClassName("form-input-text address w-input")[0].value,
+        organisation: document.getElementsByClassName("form-input-text address w-input")[0].value,
+        comments: document.getElementsByClassName("form-input-textlong notes w-input")[0].value
+      }
+    ];
+
+    map.set['Option Map', JSON.stringify(optionEnabledMap)];
+
+    return map;
+  }
+  
+  function submitRequest(){
+  	console.log("request submitted");
+  	
+  	var xhr = new XMLHttpRequest();
+    xhr.open("POST", requestEndpoint, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(getFormData());
+  }
+  
+  //event listener prevents the submit from being pressed until all mandatory fields have a value
+  form.addEventListener("change", () => {
+    for(field of mandatoryFields){
+    	//event returns false if any field is not filled out
+    	if(field.value.length == 0){
+      	hideSubmitButton();
+      	return false; 
+      }
+    }
+    showSubmitButton();
+  });
+
+  button.addEventListener("onClick", () => {console.log("aa")});
+
