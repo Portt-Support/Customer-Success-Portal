@@ -18,9 +18,9 @@ function navbar_check(){
     //"w--current" is appended to the classname when in view
     if(targetTopic.includes("w--current")){
 			var links = document.getElementsByClassName(topic);
-      console.log(links[0]);
+      
       for(link of links){
-      	console.log(link);
+      	
         link.style.display = "block";
       }
 		}
