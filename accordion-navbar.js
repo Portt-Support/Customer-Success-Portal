@@ -1,3 +1,14 @@
+
+
+// navbar utility script
+//Like all my other scripts
+//Dont bother maintaining just start again
+//Written By: Not Matthew Holmes
+
+
+//Added this to try and force GC to reload 
+console.log("Version 1.0.2");
+
 var navbar_elements = document.getElementsByClassName("topic-block");
 
 
