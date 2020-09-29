@@ -1,5 +1,3 @@
-<script>
-
 var navbar_elements = document.getElementsByClassName("topic-block");
 
 
@@ -37,5 +35,3 @@ function navbar_check(){
 }
 
 navbar_check();
-  
-</script>
