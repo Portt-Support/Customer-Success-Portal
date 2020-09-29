@@ -8,7 +8,7 @@
 
 
 //Added this to try and force GC to reload 
-console.log("Version 1.0.3");
+console.log("Version 1.0.4");
 
 var navbar_elements = document.getElementsByClassName("topic-block");
 
