@@ -5,8 +5,7 @@
 //Event listeners continue to be unoptimal in this file
 //Forward//
 
-console.log("CHOOSE YOUR OWN ADVENTURE SCRIPT 'adventure.js' LOADED!");
-console.log("WHY JAVASCRIPT? WHY?");
+console.log("Adventure - Version 1.0.5");
 
 
 
