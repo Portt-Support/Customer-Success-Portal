@@ -142,9 +142,19 @@ options["process-information"] = option_processInformation;
 //This is all Brendan Eich's fault 
 
 for(optionBtn in optionControlMap){
-  console.log(optionBtn);
+ 
+  optionBtn.onclick = function eventFunction(){
+   
+    if(!optionEnabledMap["contract-register"])
+    optionEnabledMap["contract-register"] = true;
+  else                                      
+    optionEnabledMap["contract-register"] = false;
+   
+   updateFunctions();
+  }
+ 
 }
-
+/*
 btn = optionControlMap['contract-register'];
 
 btn.onclick = function eventFunction(){
@@ -311,7 +321,7 @@ btn.onclick = function eventFunction(){
 };
 
 //Event Listeners//
-
+*/
 updateFunctions();
 
 
