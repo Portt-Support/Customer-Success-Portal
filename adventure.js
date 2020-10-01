@@ -145,10 +145,10 @@ for(optionBtn in optionControlMap){
  
   optionBtn.onclick = function eventFunction(){
    
-    if(!optionEnabledMap["contract-register"])
-    optionEnabledMap["contract-register"] = true;
+    if(!optionEnabledMap[optionBtn])
+    optionEnabledMap[optionBtn] = true;
   else                                      
-    optionEnabledMap["contract-register"] = false;
+    optionEnabledMap[optionBtn] = false;
    
    updateFunctions();
   }
