@@ -5,7 +5,7 @@
 //Event listeners continue to be unoptimal in this file
 //Forward//
 
-console.log("Adventure - Version 1.0.5");
+console.log("Adventure - Version 1.1.2");
 
 
 
