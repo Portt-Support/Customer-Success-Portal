@@ -141,6 +141,10 @@ options["process-information"] = option_processInformation;
 //This shit is supremely ugly
 //This is all Brendan Eich's fault 
 
+for(optionBtn in optionControlMap){
+  console.log(optionBtn);
+}
+
 btn = optionControlMap['contract-register'];
 
 btn.onclick = function eventFunction(){
