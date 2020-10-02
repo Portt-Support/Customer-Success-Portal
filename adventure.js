@@ -1,66 +1,42 @@
-//Forward://
-//This script was put together pretty quickly and by someone with little experience of JS. 
-//My suggestion: If you do have to maintain this in the future, dont, just start again
-//
-//Event listeners continue to be unoptimal in this file
-//Forward//
+console.log("Adventure - Version 1.2.0");
+//Version 1.2.0: Total rewrite of this script. Previous version 1.1.2, please see GitHub for comits of previous version... FYI, I only include version numbers so I can easily tell if the script has been cached 
 
-console.log("Adventure - Version 1.1.2");
+//PLS READ
+//I'm trying to overcomment this code so that whatever poor sole has to maintain this later, doesn't just straight up quit on the spot
+//Friendly Name - a friendly name is an easily rememberable name that gives you some idea over what the object is
+
+//Declaration section
+//This section is important for configuring exactly how everything works. 
+//optionConfiguration sets an options friendly name against the friendly names for the options it refers to
+//elementMap stores references to HTML elements against friendly names
 
 
+//Configure the options used in each object
+//The map is only temporary and each element from the map is removed after being added to an optionButton object
+//optionConfiguration[friendly name for option] = [friendly name for element (used in elementMap), etc]
+let optionConfiguration = new Map();
+optionConfiguration["contract-register"] = ["account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization", "report", "stakeholders"];
+optionConfiguration["endorsements"] = ["workflow-advanced", "compliance", "account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization"];
+optionConfiguration["milestones"] = ["milestone-types", "contract", "core"];
+optionConfiguration["collaborate-with-vendors"] = ["portt-hub", "sharing", "contract", "core", "organization"]; 
+optionConfiguration["contract-issues"] = ["issues", "contract", "core", "organization"];
+optionConfiguration["supplier-performance"] = ["supplier-performance", "organization-assessments", "issues", "analytics", "contract", "core", "organization"];
+optionConfiguration["schedule-of-rates"] = ["rate-types", "unit-types", "panel", "contract", "core", "organization"];
+optionConfiguration["panels"] = ["panel-types", "panel-hierarchies", "contract", "core", "organization"];
+optionConfiguration["compliance"] = ["compliance-types", "template-generation", "compliance", "contract", "core", "organization", "procurement"];
+optionConfiguration["spend-tracking"] = ["financial", "contract-types", "workflow-basic"];
+optionConfiguration["track-benefits"] = ["benefits"];
+optionConfiguration["complex-compliance"] = ["compliance"];
+optionConfiguration["collaborate-on-compliance"] = ["portt-hub", "sharing", "organization-certifications", "organization-assessments"];
+optionConfiguration["organisation-information"] = ["analytics", "landing-page"];
+optionConfiguration["process-information"] = ["landing-page"];
 
-//DECLARATION SECTION
 //Stores a reference to the HTML element against a friendly name
-//optionControlMap[Friendly Name] = HTML element
- 
-
-let optionControlMap = new Map();
-optionControlMap["contract-register"] = document.getElementsByClassName("optionbutton contract-register w-button")[0];
-optionControlMap["endorsements"] = document.getElementsByClassName("optionbutton endorsements w-button")[0];
-optionControlMap["milestones"] = document.getElementsByClassName("optionbutton milestones w-button")[0];
-optionControlMap["collaborate-with-vendors"] = document.getElementsByClassName("optionbutton collaborate-with-vendors w-button")[0];
-optionControlMap["contract-issues"] = document.getElementsByClassName("optionbutton contract-issues w-button")[0];
-optionControlMap["supplier-performance"] = document.getElementsByClassName("optionbutton supplier-performance w-button")[0];
-optionControlMap["schedule-of-rates"] = document.getElementsByClassName("optionbutton schedule-of-rates w-button")[0];
-optionControlMap["panels"] = document.getElementsByClassName("optionbutton panels w-button")[0];
-optionControlMap["compliance"] = document.getElementsByClassName("optionbutton compliance w-button")[0];
-optionControlMap["spend-tracking"] = document.getElementsByClassName("optionbutton spend-tracking w-button")[0];
-optionControlMap["track-benefits"] = document.getElementsByClassName("optionbutton track-benefits w-button")[0];
-optionControlMap["complex-compliance"] = document.getElementsByClassName("optionbutton complex-compliance w-button")[0];
-optionControlMap["collaborate-on-compliance"] = document.getElementsByClassName("optionbutton collaborate-on-compliance w-button")[0];
-optionControlMap["organisation-information"] = document.getElementsByClassName("optionbutton organisation-information w-button")[0];
-optionControlMap["process-information"] = document.getElementsByClassName("optionbutton process-information w-button")[0];
-
-//Used to track what options have been enabled/disabled.
-
-
-let optionEnabledMap = new Map();
-optionEnabledMap["contract-register"] = false;
-optionEnabledMap["endorsements"] = false;
-optionEnabledMap["milestones"] = false;
-optionEnabledMap["collaborate-with-vendors"] = false; 
-optionEnabledMap["contract-issues"] = false;
-optionEnabledMap["supplier-performance"] = false;
-optionEnabledMap["schedule-of-rates"] = false;
-optionEnabledMap["panels"] = false;
-optionEnabledMap["compliance"] = false;
-optionEnabledMap["spend-tracking"] = false;
-optionEnabledMap["track-benefits"] = false;
-optionEnabledMap["complex-compliance"] = false;
-optionEnabledMap["collaborate-on-compliance"] = false;
-optionEnabledMap["organisation-information"] = false;
-optionEnabledMap["process-information"] = false;
-
-//optionControlMap["contract-register"].addEventListener("click", contract-register);
-
-//Option declaration over
-
-//Map houses the functions and modules
-//Originally two seperate maps, but combined for easiness
-//elementMap[Friendly Name for Element] = reference to HTML element
-//getElementsByClassName returns an array, the item we want is always the first element in the array. 
-
-
+//Helpful in looking up an element (module or feature only) without needing to know the full class name
+//TODO: This doesn't necessarily need to be hard coded
+//To improve this wrap in for loop and look up all elements with a class name including module or feature
+//Would just take some formatting to get each class name into it's friendly equivalent.
+//Alternatively whenever I need to refer to one of these HTML elements I could just format the friendly text into the class name
 let elementMap = new Map();
 //Modules
 elementMap["contract"] = document.getElementsByClassName("module contract")[0];
@@ -73,6 +49,7 @@ elementMap["analytics"] = document.getElementsByClassName("module analytics")[0]
 elementMap["financial"] = document.getElementsByClassName("module financial")[0];
 elementMap["landing-page"] = document.getElementsByClassName("module landingpage")[0];
 elementMap["portt-hub"] = document.getElementsByClassName("module portt-hub")[0];
+
 
 //Functions
 elementMap["account-codes"] = document.getElementsByClassName("feature accountcodes")[0];
@@ -97,281 +74,111 @@ elementMap["supplier-performance"] = document.getElementsByClassName("feature su
 elementMap["template-generation"] = document.getElementsByClassName("feature templategeneration")[0];
 elementMap["unit-types"] = document.getElementsByClassName("feature unittypes")[0];
 
-//Option Array - Configure the different options
-//These arrays contain the friendly names for elements found in elementMap
-//option_name = [elementMap key]
-option_contractRegister = ["account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization", "report", "stakeholders"];
-option_endorsements = ["workflow-advanced", "compliance", "account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization"];
-option_milestones = ["milestone-types", "contract", "core"];
-option_collaborateWithVendors = ["portt-hub", "sharing", "contract", "core", "organization"];
-option_contractIssues = ["issues", "contract", "core", "organization"];
-option_supplierPerformance = ["supplier-performance", "organization-assessments", "issues", "analytics", "contract", "core", "organization"]; 
-option_scheduleOfRates = ["rate-types", "unit-types", "panel", "contract", "core", "organization"];
-option_panels = ["panel-types", "panel-hierarchies", "contract", "core", "organization"];
-option_compliance = ["compliance-types", "template-generation", "compliance", "contract", "core", "organization", "procurement"];
-option_spendTracking = ["financial", "contract-types", "workflow-basic"];
-option_trackBenefits = ["benefits"];
-option_complexCompliance = ["compliance"];
-option_collaborateOnCompliance = ["portt-hub", "sharing", "organization-certifications", "organization-assessments"];
-option_organisationInformation = ["analytics", "landing-page"];
-option_processInformation = ["landing-page"];
+//Declaration section over. Poorly written logic lies ahead. I kinda admire CPP, all of the above would be put in a header file. 
 
-//A map of all options where the option array is stored against a friendly name for the option
-//options[Friendly Name for Option] = option array
-let options = new Map();
-options["contract-register"] = option_contractRegister;
-options["endorsements"] = option_endorsements;
-options["milestones"] = option_milestones;
-options["collaborate-with-vendors"] = option_collaborateWithVendors; 
-options["contract-issues"] = option_contractIssues;
-options["supplier-performance"] = option_supplierPerformance;
-options["schedule-of-rates"] = option_scheduleOfRates;
-options["panels"] = option_panels;
-options["compliance"] = option_compliance;
-options["spend-tracking"] = option_spendTracking;
-options["track-benefits"] = option_trackBenefits;
-options["complex-compliance"] = option_complexCompliance;
-options["collaborate-on-compliance"] = option_collaborateOnCompliance;
-options["organisation-information"] = option_organisationInformation;
-options["process-information"] = option_processInformation;
 
-//DECLARATION SECTION OVER
 
-//Event Listeners//
-//This shit is supremely ugly
-//This is all Brendan Eich's fault 
+//store a map of all option buttons
+//an object is stored against a map
+let optionButtonMap = new Map();
 
-for(optionBtn in optionControlMap){
- 
-  optionBtn.onclick = function eventFunction(){
-   
-    if(!optionEnabledMap[optionBtn])
-    optionEnabledMap[optionBtn] = true;
-  else                                      
-    optionEnabledMap[optionBtn] = false;
-   
-   updateFunctions();
+//Option buttons are all of the selectable buttons on the left hand column of the build your implementation form
+//We loop over all of these buttons and store an object that contains a reference back to the HTML element as well as some other helper properties
+//Previously a lot of this was stored across multiple maps.
+for(optionButton of document.getElementsByClassName("optionbutton")){
+  //Formats the class name of the button into the same format as the friendly names used in our Maps
+  var option = optionButton.className.replace("optionbutton ", "").replace(" w-button", "");
+  //Placeholder variable - originally this was declared and stored at the same time but ran into unrelated issues that arrose become I'm incompotent and so is JS
+  var element = {
+    //Stores the HTML element so I can find the original element if necessary
+    htmlElement: optionButton,
+    //true = option has been selected
+    enabled: false,
+    //stores the friendly names in array of any modules or functions that are linked
+    optionConfiguration: optionConfiguration[option]
   }
- 
+   //store object
+  optionButtonMap[option] = element;
+  //The elements stored are no longer necessary so may as well free up some memory
+  optionConfiguration.delete(option);
+
 }
-/*
-btn = optionControlMap['contract-register'];
-
-btn.onclick = function eventFunction(){
-  //console.log("contract-register");
-  if(!optionEnabledMap["contract-register"])
-    optionEnabledMap["contract-register"] = true;
-  else                                      
-    optionEnabledMap["contract-register"] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap['endorsements'];
-
-btn.onclick = function eventFunction(){
-  //console.log('endorsements');
-  if(!optionEnabledMap['endorsements'])
-    optionEnabledMap['endorsements'] = true;
-  else                                      
-    optionEnabledMap['endorsements'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap['milestones'];
-
-btn.onclick = function eventFunction(){
-  //console.log('milestones');
-  if(!optionEnabledMap['milestones'])
-    optionEnabledMap['milestones'] = true;
-  else                                      
-    optionEnabledMap['milestones'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap['collaborate-with-vendors'];
-
-btn.onclick = function eventFunction(){
-  //console.log('collaborate-with-vendors');
-  if(!optionEnabledMap['collaborate-with-vendors'])
-    optionEnabledMap['collaborate-with-vendors'] = true;
-  else                                      
-    optionEnabledMap['collaborate-with-vendors'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["contract-issues"];
-
-btn.onclick = function eventFunction(){
-  //console.log('contract-issues');
-  if(!optionEnabledMap['contract-issues'])
-    optionEnabledMap['contract-issues'] = true;
-  else                                      
-    optionEnabledMap['contract-issues'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["supplier-performance"];
-
-btn.onclick = function eventFunction(){
-  //console.log('supplier-performance');
-  if(!optionEnabledMap['supplier-performance'])
-    optionEnabledMap['supplier-performance'] = true;
-  else                                      
-    optionEnabledMap['supplier-performance'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["schedule-of-rates"];
-
-btn.onclick = function eventFunction(){
-  //console.log('schedule-of-rates');
-  if(!optionEnabledMap['schedule-of-rates'])
-    optionEnabledMap['schedule-of-rates'] = true;
-  else                                      
-    optionEnabledMap['schedule-of-rates'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["panels"];
-
-btn.onclick = function eventFunction(){
-  //console.log('panels');
-  if(!optionEnabledMap['panels'])
-    optionEnabledMap['panels'] = true;
-  else                                      
-    optionEnabledMap['panels'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["compliance"];
-
-btn.onclick = function eventFunction(){
-  //console.log('compliance');
-  if(!optionEnabledMap['compliance'])
-    optionEnabledMap['compliance'] = true;
-  else                                      
-    optionEnabledMap['compliance'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["spend-tracking"];
-
-btn.onclick = function eventFunction(){
-  //console.log('spend-tracking');
-  if(!optionEnabledMap['spend-tracking'])
-    optionEnabledMap['spend-tracking'] = true;
-  else                                      
-    optionEnabledMap['spend-tracking'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["track-benefits"];
-
-btn.onclick = function eventFunction(){
-  //console.log('track-benefits');
-  if(!optionEnabledMap['track-benefits'])
-    optionEnabledMap['track-benefits'] = true;
-  else                                      
-    optionEnabledMap['track-benefits'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["complex-compliance"];
-
-btn.onclick = function eventFunction(){
-  //console.log('complex-compliance');
-  if(!optionEnabledMap['complex-compliance'])
-    optionEnabledMap['complex-compliance'] = true;
-  else                                      
-    optionEnabledMap['complex-compliance'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["collaborate-on-compliance"];
-
-btn.onclick = function eventFunction(){
-  //console.log('collaborate-on-compliance');
-  if(!optionEnabledMap['collaborate-on-compliance'])
-    optionEnabledMap['collaborate-on-compliance'] = true;
-  else                                      
-    optionEnabledMap['collaborate-on-compliance'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["organisation-information"];
-
-btn.onclick = function eventFunction(){
-  //console.log('organisation-information');
-  if(!optionEnabledMap['organisation-information'])
-    optionEnabledMap['organisation-information'] = true;
-  else                                      
-    optionEnabledMap['organisation-information'] = false;
-  updateFunctions();
-};
-
-btn = optionControlMap["process-information"];
-
-btn.onclick = function eventFunction(){
-  //console.log('process-information');
-  if(!optionEnabledMap['process-information'])
-    optionEnabledMap['process-information'] = true;
-  else                                      
-    optionEnabledMap['process-information'] = false;
-  updateFunctions();
-};
-
-//Event Listeners//
-*/
-updateFunctions();
 
 
-//Firstly loops through all disabled options, and disables the elements/functions part of their config. 
-//Secondly loops through all of the enabled options, and ebales the elements/functions part of their config. 
-//This should remove the issue where elements required as part of enabled options were being disabled when one of the options was disabled
-//By looping through and finding out where those elements are still required
-//In laymans terms, we disable everything, and then only reenable the items that are necessary
-function updateFunctions(){
-  
-  for(option in optionControlMap){
-    //console.log(option);  
-    if(optionEnabledMap[option] == false){
-      for(element of options[option]){
-        //remove heighlight
-        //console.log(element);
-        elementMap[element].setAttribute('style', 'display:none');
-        //console.log(element);
+//Takes an input string and removes the unneccessary portions of the class name
+//Only really meant for formatting optionButtons. Something a little more complex will be necessary if I want this to handle all elements
+function convertToFriendly(inputName){
+  return inputName.replace("optionbutton ", "").replace(" w-button", "");
+}
+
+//Determines if the input option has already been enabled
+//If already enabled, set enabled to false
+//Else set enabled to true
+function flipBool(option){
+  if(optionButtonMap[option].enabled){
+    optionButtonMap[option].enabled = false;
+  }
+  else if(!optionButtonMap[option].enabled){
+    optionButtonMap[option].enabled = true;
+  }
+}
+
+//Works through each option in the optionMap
+//The first loop block hides all modules and features
+//The second loop only reenables those that should be enabled
+function updateInterface(){
+  //disables all options first time
+  for(option in optionButtonMap){
+    for(element in optionButtonMap[option].optionConfiguration){
+      var targetElement = optionButtonMap[option].optionConfiguration[element];
+      if(typeof elementMap[targetElement] === 'undefined'){//why the fuck does JS work like this? I mean I probably just dont understand the language
+      }
+      else{
+        elementMap[targetElement].setAttribute('style', 'display:none');        
       }
     }
   }
 
-  for(option in optionControlMap){
-    if(optionEnabledMap[option] == true){
-      for(element of options[option]){
-        
-        //What happens to functions that have been selected
-        //i.e. they glow to show they've been selected
-        //innerContent should just change the text
-        elementMap[element].setAttribute('style', 'display:visible');
-        //square overlay that's a background tint cyan or purple tint
-        
+
+  for(option in optionButtonMap){
+    if(optionButtonMap[option].enabled){
+      for(element in optionButtonMap[option].optionConfiguration){
+        var targetElement = optionButtonMap[option].optionConfiguration[element];
+        if(typeof elementMap[targetElement] === 'undefined'){//why the fuck does JS work like this? I mean I probably just dont understand the language
+        }
+        else{
+          elementMap[targetElement].setAttribute('style', 'display:visible');        
+        }
       }
     }
   }
 
+
 }
 
-//Probably no longer useful, this was an actually clean solution
-//Now it's all just hard coded bs
-function optionSelected(optionName){
-  //console.log(optionName)
-  //console.log("Event Handler: Option Selected - " + optionName);
-  if(optionName == null){
-    //console.log("No option selected, yet event handler 'optionSelected' was called");
-    return false;
+//This is the event that is called any time an optionButton is clicked
+//The paramater 'option' is the element that called this function
+function optionsChanged(option){
+  var optionSelected = option.target;
+  var friendlyOptionName = convertToFriendly(option.target.className);
+  flipBool(friendlyOptionName);
+  updateInterface();
+}
+
+
+
+//Add event listener to all buttons
+function addEventListeners(){
+
+  //call this once at runtime in order to ensure all options are hidden
+  updateInterface();
+
+  //loop over each button in the map
+  //And add an event listener
+  for(option in optionButtonMap){
+    document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("click", optionsChanged);
   }
-  else if(!optionControlMap[optionName]){optionControlMap[optionName] = true;}
-  else{optionControlMap[optionName] = false;}
-  updateFunctions();
 }
 
+addEventListeners();
 
