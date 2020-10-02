@@ -158,11 +158,16 @@ function updateInterface(){
 
 //This is the event that is called any time an optionButton is clicked
 //The paramater 'option' is the element that called this function
-function optionsChanged(option){
+function optionSelected(option){
   var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
   flipBool(friendlyOptionName);
   updateInterface();
+}
+
+function optionHoveredOver(option){
+  var optionSelected = option.target;
+  var friendlyOptionName = convertToFriendly(option.target.className);
 }
 
 
@@ -176,7 +181,8 @@ function addEventListeners(){
   //loop over each button in the map
   //And add an event listener
   for(option in optionButtonMap){
-    document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("click", optionsChanged);
+    document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("click", optionSelected);
+    document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("click", optionHoveredOver);
   }
 }
 
