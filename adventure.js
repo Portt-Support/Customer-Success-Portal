@@ -1,4 +1,4 @@
-console.log("Adventure - Version 1.2.0");
+console.log("Adventure - Version 1.2.1");
 //Version 1.2.0: Total rewrite of this script. Previous version 1.1.2, please see GitHub for comits of previous version... FYI, I only include version numbers so I can easily tell if the script has been cached 
 
 //PLS READ
