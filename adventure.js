@@ -168,7 +168,7 @@ function optionSelected(option){
 function optionHoveredOver(option){
   var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
-  optionButtonMap[friendlyOptionName].setAttribute('stye', 'color:red')
+  optionButtonMap[friendlyOptionName].htmlElement.setAttribute('stye', 'color:red')
 }
 
 
