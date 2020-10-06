@@ -131,7 +131,7 @@ function updateInterface(){
   for(option in optionButtonMap){
     for(element in optionButtonMap[option].optionConfiguration){
       var targetElement = optionButtonMap[option].optionConfiguration[element];
-      if(typeof elementMap[targetElement] === 'undefined'){//why the fuck does JS work like this? I mean I probably just dont understand the language
+      if(typeof elementMap[targetElement] === 'undefined'){//why the f does JS work like this? I mean I probably just dont understand the language
       }
       else{
         elementMap[targetElement].setAttribute('style', 'display:none');        
@@ -144,7 +144,7 @@ function updateInterface(){
     if(optionButtonMap[option].enabled){
       for(element in optionButtonMap[option].optionConfiguration){
         var targetElement = optionButtonMap[option].optionConfiguration[element];
-        if(typeof elementMap[targetElement] === 'undefined'){//why the fuck does JS work like this? I mean I probably just dont understand the language
+        if(typeof elementMap[targetElement] === 'undefined'){//why the f does JS work like this? I mean I probably just dont understand the language
         }
         else{
           elementMap[targetElement].setAttribute('style', 'display:visible');        
@@ -168,6 +168,7 @@ function optionSelected(option){
 function optionHoveredOver(option){
   var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
+  optionButtonMap[friendlyOptionName].setAttribute('stye', 'color:red')
 }
 
 
@@ -182,7 +183,7 @@ function addEventListeners(){
   //And add an event listener
   for(option in optionButtonMap){
     document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("click", optionSelected);
-    document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("click", optionHoveredOver);
+    document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("mouseover", optionHoveredOver);
   }
 }
 
