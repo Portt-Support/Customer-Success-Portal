@@ -168,7 +168,13 @@ function optionSelected(option){
 function optionHoveredOver(option){
   var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
-  optionButtonMap[friendlyOptionName].htmlElement.setAttribute('stye', 'color:red')
+  optionButtonMap[friendlyOptionName].htmlElement.setAttribute('stye', 'color:black')
+}
+
+function optionHoverLeave(option){
+  var optionSelected = option.target;
+  var friendlyOptionName = convertToFriendly(option.target.className);
+  optionButtonMap[friendlyOptionName].htmlElement.removeAttribute('stye');
 }
 
 
@@ -184,6 +190,7 @@ function addEventListeners(){
   for(option in optionButtonMap){
     document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("click", optionSelected);
     document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("mouseover", optionHoveredOver);
+    document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("mouseleave", optionHoverLeave);
   }
 }
 
