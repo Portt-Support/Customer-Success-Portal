@@ -166,16 +166,20 @@ function optionSelected(option){
 }
 
 function optionHoveredOver(option){
-  console.log(option);
+  console.log(option.target);
   var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
-  optionButtonMap[friendlyOptionName].htmlElement.setAttribute('stye', 'background-color:black !important;')
+  optionButtonMap[friendlyOptionName].htmlElement.removeAttribute("style");
+  optionButtonMap[friendlyOptionName].htmlElement.setAttribute("style", "background-color:red !important;")
+  console.log(optionButtonMap[friendlyOptionName].htmlElement.attributes);
 }
 
 function optionHoverLeave(option){
+  console.log(option.target);
   var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
-  optionButtonMap[friendlyOptionName].htmlElement.removeAttribute('stye');
+  optionButtonMap[friendlyOptionName].htmlElement.setAttribute("style", "");
+  console.log(option.target);
 }
 
 
@@ -191,7 +195,7 @@ function addEventListeners(){
   for(option in optionButtonMap){
     document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("click", optionSelected);
     document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("mouseover", optionHoveredOver);
-    document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("mouseleave", optionHoverLeave);
+    document.getElementsByClassName(optionButtonMap[option].htmlElement.className)[0].addEventListener("mouseout", optionHoverLeave);
   }
 }
 
