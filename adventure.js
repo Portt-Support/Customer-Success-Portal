@@ -169,8 +169,8 @@ function optionHoveredOver(option){
   console.log(option.target);
   var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
-  optionButtonMap[friendlyOptionName].htmlElement.removeAttribute("style");
-  optionButtonMap[friendlyOptionName].htmlElement.setAttribute("style", "display:visible !important;")
+  optionButtonMap[friendlyOptionName].htmlElement.style.display = ""
+  optionButtonMap[friendlyOptionName].htmlElement.style.display = "visible !important"
   console.log(optionButtonMap[friendlyOptionName].htmlElement.attributes);
 }
 
