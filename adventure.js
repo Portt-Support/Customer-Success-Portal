@@ -174,17 +174,15 @@ function optionHoveredOver(option){
   console.log(option.target);
   var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
-  optionButtonMap[friendlyOptionName].htmlElement.style.display = ""
-  optionButtonMap[friendlyOptionName].htmlElement.style.display = "visible !important"
-  console.log(optionButtonMap[friendlyOptionName].htmlElement.attributes);
+  flipBool(friendlyOptionName);
+  updateInterface();
 }
 
 function optionHoverLeave(option){
-  console.log(option.target);
   var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
-  optionButtonMap[friendlyOptionName].htmlElement.setAttribute("style", "");
-  console.log(option.target);
+  flipBool(friendlyOptionName);
+  updateInterface();
 }
 
 
