@@ -123,11 +123,15 @@ function flipBool(option){
   }
 }
 
+
+//
 //Works through each option in the optionMap
 //The first loop block hides all modules and features
 //The second loop only reenables those that should be enabled
+//
 function updateInterface(){
-  //disables all options first time
+  
+  //Hides all options
   for(option in optionButtonMap){
     for(element in optionButtonMap[option].optionConfiguration){
       var targetElement = optionButtonMap[option].optionConfiguration[element];
@@ -140,6 +144,7 @@ function updateInterface(){
   }
 
 
+  //Shows all options that are enabled
   for(option in optionButtonMap){
     if(optionButtonMap[option].enabled){
       for(element in optionButtonMap[option].optionConfiguration){
