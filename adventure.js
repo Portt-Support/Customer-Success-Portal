@@ -14,7 +14,7 @@ console.log("Adventure - Version 1.2.2");
 //Configure the options used in each object
 //The map is only temporary and each element from the map is removed after being added to an optionButton object
 //optionConfiguration[friendly name for option] = [friendly name for element (used in elementMap), etc]
-let optionConfiguration = new Map();
+let optionConfiguration = new Map()
 optionConfiguration["contract-register"] = ["account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization", "report", "stakeholders"];
 optionConfiguration["endorsements"] = ["workflow-advanced", "compliance", "account-codes", "contract-types", "workflow-basic", "stakeholders-basic", "core", "compliance-basic", "contract", "organization"];
 optionConfiguration["milestones"] = ["milestone-types", "contract", "core"];
@@ -86,8 +86,10 @@ let optionButtonMap = new Map();
 //We loop over all of these buttons and store an object that contains a reference back to the HTML element as well as some other helper properties
 //Previously a lot of this was stored across multiple maps.
 for(optionButton of document.getElementsByClassName("optionbutton")){
+
   //Formats the class name of the button into the same format as the friendly names used in our Maps
-  var option = optionButton.className.replace("optionbutton ", "").replace(" w-button", "");
+  var option = convertToFriendly(optionButton.className);
+
   //Placeholder variable - originally this was declared and stored at the same time but ran into unrelated issues that arrose become I'm incompotent and so is JS
   var element = {
     //Stores the HTML element so I can find the original element if necessary
@@ -96,7 +98,8 @@ for(optionButton of document.getElementsByClassName("optionbutton")){
     enabled: false,
     //stores the friendly names in array of any modules or functions that are linked
     optionConfiguration: optionConfiguration[option]
-  }
+  };
+
    //store object
   optionButtonMap[option] = element;
   //The elements stored are no longer necessary so may as well free up some memory
@@ -129,7 +132,7 @@ function flipBool(option){
 //The first loop block hides all modules and features
 //The second loop only reenables those that should be enabled
 //
-function updateInterface(){
+function updateSelectedItemList(){
   
   //Hides all options
   for(option in optionButtonMap){
@@ -161,28 +164,56 @@ function updateInterface(){
 
 }
 
+function userHoverOnOption(option){
+
+  for(element in optionButtonMap[option].optionConfiguration){
+
+    var targetElement = optionButtonMap[option].optionConfiguration[element];
+
+    if(typeof elementMap[targetElement] === 'undefined'){}
+
+    else{
+      elementMap[targetElement].setAttribute('style', 'display:visible; background-color:#60C2CC;')
+    }
+
+  }
+
+}
+
+function userHoverLeaveOption(option){
+
+  for(element in optionButtonMap[option].optionConfiguration){
+
+    var targetElement = optionButtonMap[option].optionConfiguration[element];
+
+    if(typeof elementMap[targetElement] === 'undefined'){}
+
+    else{
+      elementMap[targetElement].setAttribute('style', 'display:none; background-color:initial;')
+    }
+    
+  }
+
+}
+
 //This is the event that is called any time an optionButton is clicked
 //The paramater 'option' is the element that called this function
 function optionSelected(option){
-  var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
   flipBool(friendlyOptionName);
-  updateInterface();
+  updateSelectedItemList();
 }
 
 function optionHoveredOver(option){
-  console.log(option.target);
-  var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
-  flipBool(friendlyOptionName);
-  updateInterface();
+  userHoverOnOption(friendlyOptionName);
+  
 }
 
 function optionHoverLeave(option){
-  var optionSelected = option.target;
   var friendlyOptionName = convertToFriendly(option.target.className);
-  flipBool(friendlyOptionName);
-  updateInterface();
+  userHoverLeaveOption(friendlyOptionName);
+  updateSelectedItemList();
 }
 
 
@@ -191,7 +222,7 @@ function optionHoverLeave(option){
 function addEventListeners(){
 
   //call this once at runtime in order to ensure all options are hidden
-  updateInterface();
+  updateSelectedItemList();
 
   //loop over each button in the map
   //And add an event listener
