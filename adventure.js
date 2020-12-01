@@ -173,7 +173,7 @@ function userHoverOnOption(option){
     if(typeof elementMap[targetElement] === 'undefined'){}
 
     else{
-      elementMap[targetElement].setAttribute('style', 'display:visible; background-color:#60C2CC; color:white; ')
+      elementMap[targetElement].setAttribute('style', 'display:visible; background-color:#60C2CC; color:white; border-radius:5px; padding:5px;')
     }
 
   }
@@ -189,7 +189,7 @@ function userHoverLeaveOption(option){
     if(typeof elementMap[targetElement] === 'undefined'){}
 
     else{
-      elementMap[targetElement].setAttribute('style', 'display:none; background-color:initial; color:white;')
+      elementMap[targetElement].setAttribute('style', 'display:none; background-color:initial; color:initial;')
     }
     
   }
